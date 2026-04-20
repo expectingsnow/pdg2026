@@ -125,7 +125,7 @@ foreach (var file in files)
 
 await using var writer = new StreamWriter(pathOut, append: false, Encoding.UTF8);
 await using var csv = new CsvWriter(writer, CultureInfo.InvariantCulture);
-await csv.WriteRecordsAsync(records);
+await csv.WriteRecordsAsync(records.OrderBy(p => int.Parse(p.bib)));
 
 
 Console.WriteLine("--------------------");
