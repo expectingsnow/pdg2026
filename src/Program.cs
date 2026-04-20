@@ -1,6 +1,12 @@
-﻿Console.WriteLine("Hello, World!");
+﻿using System.Text.Json;
+
+Console.WriteLine("Hello, World!");
 
 var directoryData = Path.Combine(Directory.GetCurrentDirectory(), "data");
+
+Directory.CreateDirectory(directoryData);
+
+#region download
 
 List<string> links =
 [
@@ -10,7 +16,6 @@ List<string> links =
     "https://api-live.pdg.ch/replay/races/A2/keyframe?timestamp_lte=1776522750"
 ];
 
-Directory.CreateDirectory(directoryData);
 
 using var client = new HttpClient();
 
@@ -40,4 +45,25 @@ foreach (var link in links)
     File.WriteAllText(path, content);
 
        Console.WriteLine($"... downloaded.");
+}
+#endregion
+
+var files = Directory
+                      .GetFiles(directoryData, "*.json")
+                      .OrderBy(p => p)
+                      .ToArray();
+
+foreach (var file in files)
+{
+    var content = File.ReadAllText(file);
+    var data = JsonSerializer.Deserialize<RootObject>(content);
+
+    if (data == null)
+    {
+        Console.WriteLine($"Json deserialization failed. [{file}]");
+        continue;
+    }
+    var frames = data.keyframe.Select(p=>p.Value).ToArray();
+    
+    Console.WriteLine($"{file} - {frames.Length} keyframes");
 }
