@@ -16,12 +16,9 @@ using var client = new HttpClient();
 
 foreach (var link in links)
 {
-    Console.WriteLine(link);
+    Console.Write(link);
 
-    var response = await client.GetAsync(link);
-    var content = await response.Content.ReadAsStringAsync();
-
-    var fileName = Path.Combine(
+    var path = Path.Combine(
         directoryData, 
         link.Replace(":", "_")
             .Replace("/", "_")
@@ -30,5 +27,17 @@ foreach (var link in links)
             .Replace("-", "_")
             .Replace(".", "_") + ".json");
 
-    File.WriteAllText(fileName, content);
+    if(File.Exists(path))
+    {
+        Console.WriteLine($"... skipping");
+        continue;
+    }
+
+    var response = await client.GetAsync(link);
+    var content = await response.Content.ReadAsStringAsync();
+
+
+    File.WriteAllText(path, content);
+
+       Console.WriteLine($"... downloaded.");
 }
