@@ -72,6 +72,8 @@ foreach (var file in files)
                 bib                : frame.bib,
                 name               : frame.name,
                 categoryName       : frame.category.name,
+                categoryKey        : frame.category.key,
+                categoryParentKey  : frame.category.parent_key,
                 startBlockKey      : frame.start_block.key,
                 startBlockStartDate: frame.start_block.start_date,
                 athlete1Name       : frame.athletes.Length > 0 ? frame.athletes[0].name        : null,

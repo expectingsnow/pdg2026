@@ -2,7 +2,9 @@ public record Datum(
     string bib,
     string name,
     
+    string categoryKey,
     string categoryName,
+    string categoryParentKey,
     
     string startBlockKey,
     string startBlockStartDate,
