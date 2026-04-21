@@ -9,6 +9,13 @@ Downloading the links below and a little massaging to csv and xlsx...
 - [pdg2026.csv](./data/pdg2026.csv)
 - [pdg2026.xlsx](./data/pdg2026.xlsx)
 
+Official results at https://www.mso.swiss/de/events/2378-patrouille-des-glaciers/results?type=SCRATCH&typeId=14966 
+
+- [pdg2026-A1-Overall.csv](./data/pdg2026-A1-Overall.csv)
+- [pdg2026-Z1-Overall.csv](./data/pdg2026-Z1-Overall.csv)
+- [pdg2026-A2-Overall.csv](./data/pdg2026-A2-Overall.csv)
+- [pdg2026-Z2-Overall.csv](./data/pdg2026-Z2-Overall.csv)
+
 # Links
 
 - https://www.mso.swiss/de/events/2378-patrouille-des-glaciers
