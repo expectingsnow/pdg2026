@@ -71,11 +71,15 @@ foreach (var file in files)
         rootObject.keyframe.Select(p => p.Value).Select(frame => new Datum(
                 bib                : frame.bib,
                 name               : frame.name,
-                categoryName       : frame.category.name,
-                categoryKey        : frame.category.key,
+                categoryName        : frame.category.name,
                 categoryParentKey  : frame.category.parent_key,
                 startBlockKey      : frame.start_block.key,
-                startBlockStartDate: frame.start_block.start_date,
+                
+                status             : frame.status, 
+                time               : Helper.TryParseIsoDuration(frame.time, out var time) ? time.ToString() : null,
+                rank               : frame.rank == 0 ? null : frame.rank,
+                crank              : frame.crank,
+                
                 athlete1Name       : frame.athletes.Length > 0 ? frame.athletes[0].name        : null,
                 athlete1BirthYear  : frame.athletes.Length > 0 ? frame.athletes[0].birth_year  : null,
                 athlete1Nationality: frame.athletes.Length > 0 ? frame.athletes[0].nationality : null,
@@ -85,11 +89,7 @@ foreach (var file in files)
                 athlete3Name       : frame.athletes.Length > 2 ? frame.athletes[2].name        : null,
                 athlete3BirthYear  : frame.athletes.Length > 2 ? frame.athletes[2].birth_year  : null,
                 athlete3Nationality: frame.athletes.Length > 2 ? frame.athletes[2].nationality : null,
-                status             : frame.status,
-                start              : frame.start,
-                time               : Helper.TryParseIsoDuration(frame.time, out var time) ? time.ToString() : null,
-                rank               : frame.rank,
-                crank              : frame.crank,
+              
                 checkPoint00       : Helper.TimeAtCheckPoint(frame.checkpoints, "S0" )?.ToString() ?? string.Empty,
                 checkPoint01       : Helper.TimeAtCheckPoint(frame.checkpoints, "S1" )?.ToString() ?? string.Empty,
                 checkPoint02       : Helper.TimeAtCheckPoint(frame.checkpoints, "S2" )?.ToString() ?? string.Empty,
@@ -104,7 +104,6 @@ foreach (var file in files)
                 checkPoint11       : Helper.TimeAtCheckPoint(frame.checkpoints, "S11")?.ToString() ?? string.Empty,
                 checkPoint12       : Helper.TimeAtCheckPoint(frame.checkpoints, "S12")?.ToString() ?? string.Empty,
 
-                time_00_01         : Helper.TimeSpanFromCheckPointToCheckPoint(frame.checkpoints, "S0" , "S1" )?.ToString() ?? string.Empty,
                 time_01_02         : Helper.TimeSpanFromCheckPointToCheckPoint(frame.checkpoints, "S1" , "S2" )?.ToString() ?? string.Empty,
                 time_02_03         : Helper.TimeSpanFromCheckPointToCheckPoint(frame.checkpoints, "S2" , "S3" )?.ToString() ?? string.Empty,
                 time_03_04         : Helper.TimeSpanFromCheckPointToCheckPoint(frame.checkpoints, "S3" , "S4" )?.ToString() ?? string.Empty,
@@ -129,4 +128,5 @@ await csv.WriteRecordsAsync(records.OrderBy(p => int.Parse(p.bib)));
 
 
 Console.WriteLine("--------------------");
+Console.WriteLine("done");
 
