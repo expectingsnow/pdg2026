@@ -3,6 +3,8 @@ using System.Text;
 using System.Text.Json;
 using CsvHelper;
 
+Console.WriteLine("start");
+
 var directoryData = Path.Combine(Directory.GetCurrentDirectory(), "data");
 
 Directory.CreateDirectory(directoryData);
@@ -10,6 +12,8 @@ Directory.CreateDirectory(directoryData);
 var pathOut = Path.Combine(directoryData, "pdg2026.csv");
 
 #region download
+Console.WriteLine("--------------------");
+Console.WriteLine("get data");
 
 List<string> links = [
     "https://api-live.pdg.ch/replay/races/Z1/keyframe?timestamp_lte=1776350873",
@@ -53,8 +57,11 @@ foreach (var link in links)
 }
 #endregion
 
-Console.WriteLine("--------------------");
 
+
+#region load and transform
+Console.WriteLine("--------------------");
+Console.WriteLine("transform data");
 var files = Directory
                       .GetFiles(directoryData, "*.json")
                       .OrderBy(p => p)
@@ -119,14 +126,15 @@ foreach (var file in files)
         )
     );
 }
+#endregion
 
-
-
+#region dump
 await using var writer = new StreamWriter(pathOut, append: false, Encoding.UTF8);
 await using var csv = new CsvWriter(writer, CultureInfo.InvariantCulture);
 await csv.WriteRecordsAsync(records.OrderBy(p => int.Parse(p.bib)));
-
-
+#endregion
+Console.WriteLine("--------------------");
+Console.WriteLine("save data");
 Console.WriteLine("--------------------");
 Console.WriteLine("done");
 
