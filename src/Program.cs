@@ -97,29 +97,28 @@ foreach (var file in files)
                       
                         checkPoint00       = frame.TimeAtCheckPoint("S0" )?.ToString() ?? string.Empty,
                         checkPoint01       = frame.TimeAtCheckPoint("S1" )?.ToString() ?? string.Empty,
-                        checkPoint02       = frame.TimeAtCheckPoint("S2" )?.ToString() ?? string.Empty,
-                        checkPoint03       = frame.TimeAtCheckPoint("S3" )?.ToString() ?? string.Empty,
-                        checkPoint04       = frame.TimeAtCheckPoint("S4" )?.ToString() ?? string.Empty,
-                        checkPoint05       = frame.TimeAtCheckPoint("S5" )?.ToString() ?? string.Empty,
-                        checkPoint06       = frame.TimeAtCheckPoint("S6" )?.ToString() ?? string.Empty,
-                        checkPoint07       = frame.TimeAtCheckPoint("S7" )?.ToString() ?? string.Empty,
-                        checkPoint08       = frame.TimeAtCheckPoint("S8" )?.ToString() ?? string.Empty,
-                        checkPoint09       = frame.TimeAtCheckPoint("S9" )?.ToString() ?? string.Empty,
-                        checkPoint10       = frame.TimeAtCheckPoint("S10")?.ToString() ?? string.Empty,
-                        checkPoint11       = frame.TimeAtCheckPoint("S11")?.ToString() ?? string.Empty,
-                        checkPoint12       = frame.TimeAtCheckPoint("S12")?.ToString() ?? string.Empty,
-
                         time_01_02         = frame.TimeFromCheckPointToCheckPoint( "S1" , "S2" )?.ToString() ?? string.Empty,
+                        checkPoint02       = frame.TimeAtCheckPoint("S2" )?.ToString() ?? string.Empty,
                         time_02_03         = frame.TimeFromCheckPointToCheckPoint( "S2" , "S3" )?.ToString() ?? string.Empty,
+                        checkPoint03       = frame.TimeAtCheckPoint("S3" )?.ToString() ?? string.Empty,
                         time_03_04         = frame.TimeFromCheckPointToCheckPoint( "S3" , "S4" )?.ToString() ?? string.Empty,
+                        checkPoint04       = frame.TimeAtCheckPoint("S4" )?.ToString() ?? string.Empty,
                         time_04_05         = frame.TimeFromCheckPointToCheckPoint( "S4" , "S5" )?.ToString() ?? string.Empty,
+                        checkPoint05       = frame.TimeAtCheckPoint("S5" )?.ToString() ?? string.Empty,
                         time_05_06         = frame.TimeFromCheckPointToCheckPoint( "S5" , "S6" )?.ToString() ?? string.Empty,
+                        checkPoint06       = frame.TimeAtCheckPoint("S6" )?.ToString() ?? string.Empty,
                         time_06_07         = frame.TimeFromCheckPointToCheckPoint( "S6" , "S7" )?.ToString() ?? string.Empty,
+                        checkPoint07       = frame.TimeAtCheckPoint("S7" )?.ToString() ?? string.Empty,
                         time_07_08         = frame.TimeFromCheckPointToCheckPoint( "S7" , "S8" )?.ToString() ?? string.Empty,
+                        checkPoint08       = frame.TimeAtCheckPoint("S8" )?.ToString() ?? string.Empty,
                         time_08_09         = frame.TimeFromCheckPointToCheckPoint( "S8" , "S9" )?.ToString() ?? string.Empty,
+                        checkPoint09       = frame.TimeAtCheckPoint("S9" )?.ToString() ?? string.Empty,
                         time_09_10         = frame.TimeFromCheckPointToCheckPoint( "S9" , "S10")?.ToString() ?? string.Empty,
+                        checkPoint10       = frame.TimeAtCheckPoint("S10")?.ToString() ?? string.Empty,
                         time_10_11         = frame.TimeFromCheckPointToCheckPoint( "S10", "S11")?.ToString() ?? string.Empty,
-                        time_11_12         = frame.TimeFromCheckPointToCheckPoint( "S11", "S12")?.ToString() ?? string.Empty
+                        checkPoint11       = frame.TimeAtCheckPoint("S11")?.ToString() ?? string.Empty,
+                        time_11_12         = frame.TimeFromCheckPointToCheckPoint( "S11", "S12")?.ToString() ?? string.Empty,
+                        checkPoint12       = frame.TimeAtCheckPoint("S12")?.ToString() ?? string.Empty
                     }
         )
     );
